@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Slot Booking</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(120deg,#667eea,#764ba2);
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+width:700px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#333;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#4a6cf7;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#f5f7ff;
+}
+
+.book-btn{
+background:#28a745;
+color:white;
+padding:6px 12px;
+border-radius:5px;
+text-decoration:none;
+font-size:14px;
+margin-right:5px;
+}
+
+.book-btn:hover{
+background:#218838;
+}
+
+.reschedule-btn{
+background:#ff9800;
+color:white;
+padding:6px 12px;
+border-radius:5px;
+text-decoration:none;
+font-size:14px;
+}
+
+.reschedule-btn:hover{
+background:#e68900;
+}
+
+.booked{
+color:red;
+font-weight:bold;
+}
+
+.view-btn{
+display:block;
+width:200px;
+margin:25px auto 0;
+text-align:center;
+background:#007bff;
+color:white;
+padding:10px;
+border-radius:6px;
+text-decoration:none;
+}
+
+.view-btn:hover{
+background:#0056b3;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Available Slots</h2>
+
+<table border="1">
+
+<tr>
+<th>Slot Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for slot in slots %}
+
+<tr>
+
+<td>{{slot[1]}}</td>
+<td>{{slot[2]}}</td>
+
+<td>
+
+{% if slot[2] == 'available' %}
+<a class="book-btn" href="/book/{{slot[0]}}">Book</a>
+{% else %}
+<span class="booked">Booked</span>
+<a class="reschedule-btn" href="/reschedule/{{slot[0]}}">Reschedule</a>
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a class="view-btn" href="/booked">View Booked Slots</a>
+
+</div>
+
+</body>
+</html>

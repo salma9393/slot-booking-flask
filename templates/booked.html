@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booked Slots</title>
+
+<style>
+
+body{
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(120deg,#667eea,#764ba2);
+margin:0;
+padding:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+width:600px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#333;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#ff6b6b;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#fff5f5;
+}
+
+.back-btn{
+display:block;
+width:150px;
+margin:25px auto 0;
+text-align:center;
+background:#4a6cf7;
+color:white;
+padding:10px;
+border-radius:6px;
+text-decoration:none;
+}
+
+.back-btn:hover{
+background:#2f54d6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Booked Slots</h2>
+
+<table border="1">
+
+<tr>
+<th>Slot Time</th>
+<th>Status</th>
+</tr>
+
+{% for slot in slots %}
+
+<tr>
+
+<td>{{slot[1]}}</td>
+<td>{{slot[2]}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a class="back-btn" href="/">Back</a>
+
+</div>
+
+</body>
+</html>
